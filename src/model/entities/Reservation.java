@@ -11,7 +11,7 @@ public class Reservation {
 	private Date checkIn;
 	private Date checkOut;
 	
-	//Formatando a data conforme pedido.
+	//Formatando a data conforme pedido
 	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
 
 	// Constructors
