@@ -30,7 +30,7 @@ public class Program {
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
 			System.out.println("Reservation: " + reservation);
 
-			// Atualizando a reserva
+			// Atualizando a reserva.
 			System.out.println();
 			System.out.println("Enter data to update the reservation: ");
 			System.out.print("Check-in date (dd/MM/yyyy): ");
@@ -47,7 +47,7 @@ public class Program {
 				System.out.println("Error in reservation: Check-out date must be after check-in date.");
 			} else {
 
-				// Depois de lida as novas datas, atualizar as datas
+				// Depois de lida as novas datas, atualizar as datas.
 				reservation.updateDates(checkIn, checkOut);
 				System.out.println("Reservation: " + reservation);
 
