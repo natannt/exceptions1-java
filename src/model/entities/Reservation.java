@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import model.exceptions.DomainException;
+
 public class Reservation {
 
 	// Atributs
@@ -16,6 +18,9 @@ public class Reservation {
 
 	// Constructors
 	public Reservation(Integer roomNumber, Date checkIn, Date checkOut) {
+		if (!checkOut.after(checkIn)) {
+			throw new DomainException("Error in reservation: Check-out date must be after check-in date.");
+		}
 		this.roomNumber = roomNumber;
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
@@ -51,17 +56,17 @@ public class Reservation {
 	}
 	
 	// Update dates
-	public String updateDates(Date checkIn, Date checkOut) {
+	public void updateDates(Date checkIn, Date checkOut) {
 		Date now = new Date();
 		if (checkIn.before(now) || checkOut.before(now)) {
-			return "Error in reservation: Reservation dates for update must be future.";
+			throw new DomainException("Error in reservation: Reservation dates for update must be future.");
 		} 
 		if (!checkOut.after(checkIn)) {
-			return "Error in reservation: Check-out date must be after check-in date.";
+			throw new DomainException("Error in reservation: Check-out date must be after check-in date.");
 		}
 		this.checkIn = checkIn; // checkIn objeto recebe o checkIn do argumento.
 		this.checkOut = checkOut; // checkOut obejto recebe o checkOut argumento.
-		return null;
+
 	}
 	
 	// toString para imprimir valores na tela
